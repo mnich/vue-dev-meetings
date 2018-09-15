@@ -35,7 +35,7 @@
                     if (!result) {
                         return;
                     }
-                    this.$props.products.push({
+                    this.products.push({
                         id: uuid(),
                         ...this.newProduct
                     });
@@ -50,5 +50,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+    .addProductForm {
+        margin: 20px;
+    }
 </style>
