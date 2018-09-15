@@ -8,13 +8,13 @@
     export default {
         name: 'SortBtnList',
         props: {
-            products: Array
+            products: Array,
         },
         methods: {
             sort(){
                 this.$emit('sortItems');
             }
-        },
+        }
     };
 </script>
 <style scoped>

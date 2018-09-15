@@ -2,7 +2,7 @@
     <div id="ProductList">
         <transition-group class="list-group-item" tag="ul">
             <productItem v-for="p in products" :name="p.name" :id="p.id" :key="p.id"
-                @removeItem="removeItem"></productItem>
+                         @removeItem="removeItem"></productItem>
         </transition-group>
         <add-product-form :products="products"></add-product-form>
 
@@ -15,8 +15,7 @@
 <script>
     import AddProductForm from "./productAddForm.vue";
     import ProductItem from "./productItem.vue";
-    import SortBtnList  from "./sortBtnList.vue";
-
+    import SortBtnList from "./sortBtnList.vue";
 
 
     export default {
@@ -32,7 +31,8 @@
                 }, {
                     id: '1',
                     name: 'Pizza'
-                }]
+                }],
+                sortTypeDesc: false
             }
         },
         methods: {
@@ -41,10 +41,19 @@
             },
             sort() {
                 this.products.sort((a, b) => {
-                    if (a.name.toLowerCase() < b.name.toLowerCase() ) return -1;
-                    if (a.name.toLowerCase() > b.name.toLowerCase() ) return 1;
+                    if (this.sortTypeDesc === true) {
+                        if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+                        if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+
+                    } else {
+                        if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
+                        if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
+                    }
+
                     return 0;
                 });
+
+                this.sortTypeDesc = !this.sortTypeDesc;
             }
         }
     }
@@ -63,7 +72,8 @@
 
     .v-enter,
     .v-leave-to
-        /* .card-leave-active for <2.1.8 */ {
+        /* .card-leave-active for <2.1.8 */
+    {
         opacity: 0;
         transform: scale(0);
     }
