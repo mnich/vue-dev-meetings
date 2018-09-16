@@ -1,4 +1,4 @@
-# vue-sample-dev-meetings
+# vue-dev-meetings
 
 ## Project setup
 ```
